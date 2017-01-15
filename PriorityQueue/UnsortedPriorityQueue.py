@@ -3,7 +3,15 @@ from DS.PriorityQueue.Empty import Empty
 from DS.LinkedList.PositionalList import PositionalList
 
 class UnsortedPriorityQueue(PriorityQueueBase):
-    """A min-oriented priority queue implemented with an unsorted list."""
+    """A min-oriented priority queue implemented with an unsorted list.
+
+    Operation  TimeComplexity
+    len             O(1)
+    is_empty        O(1)
+    add             O(1)
+    min             O(n)
+    remove_min      O(n)
+    """
 
     def _find_min(self):
         """Return Position of item with minimum key."""

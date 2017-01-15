@@ -14,4 +14,3 @@ class PriorityQueueBase:
 
     def is_empty(self):
         return len(self) == 0
-
