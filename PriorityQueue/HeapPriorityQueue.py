@@ -2,7 +2,16 @@ from DS.PriorityQueue.PriorityQueueBase import PriorityQueueBase
 from DS.PriorityQueue.Empty import Empty
 
 class HeapPriorityQueue(PriorityQueueBase):
-    """A min-oriented priority queue implemented with a binary heap."""
+    """A min-oriented priority queue implemented with a binary heap.
+
+    Operation       Time Complexity
+    len(P)              O(1)
+    P.is_empty()        O(1)
+    P.min()             O(1)
+    P.add()             O(log n) -> amortized
+    P.remove_min()      O(log n) -> amortized
+
+    """
     #--------------------non-public behaviors-----------------------#
     def _parent(self, j):
         return (j-1) // 2
@@ -42,9 +51,16 @@ class HeapPriorityQueue(PriorityQueueBase):
                 self._downheap(small_child)
 
     #--------------------------- public behaviours ----------------------#
-    def __init__(self):
+    def __init__(self, contents=()):
         """Create a new empty Priority Queue."""
-        self._data = []
+        self._data = [self._Item(k,v) for k,v in contents]      #empty by default
+        if len(self._data) > 1:
+            self._heapify()
+
+    def _heapify(self):
+        start = self._parent(len(self._data)-1)
+        for j in range(start, -1, -1):
+            self._downheap(j)
 
     def __len__(self):
         """Return the number of items in the priority queue."""
