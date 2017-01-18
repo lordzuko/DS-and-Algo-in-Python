@@ -18,6 +18,6 @@ class MapBase(MutableMapping):
         def __ne__(self, other):
             return not(self == other)
 
-        def __It__(self, other):
+        def __lt__(self, other):
             return self._key < other._key
 
