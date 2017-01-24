@@ -115,3 +115,4 @@ class Graph:
         e = self.Edge(u,v,x)
         self._outgoing[u][v] = e
         self._incoming[v][u] = e
+
